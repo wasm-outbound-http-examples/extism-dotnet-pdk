@@ -7,6 +7,9 @@ This devcontainer is configured to provide you a DotNet SDK 8.0 and wasi-sdk 20.
 
 ## Instructions for this devcontainer
 
+Tested with Extism .NET PDK [v1.0.3](https://github.com/extism/dotnet-pdk/tree/v1.0.3),
+Extism CLI [v1.5.1](https://github.com/extism/cli/releases/tag/v1.5.1).
+
 ### Preparation
 
 1. Open this repo in devcontainer, e.g. using Github Codespaces.
@@ -34,16 +37,10 @@ cd HTTPRequestingPlugin
 5. Add Extism PDK dependency to project:
 
 ```sh
-dotnet add package Extism.Pdk --prerelease
+dotnet add package Extism.Pdk
 ```
 
-6. Patch project configuration to produce solid standalone WASM file ( [info](https://github.com/extism/dotnet-pdk#installation) ):
-
-```sh
-sed -si.bak 's|<PublishTrimmed>true</PublishTrimmed>|& \n\n<WasmSingleFileBundle>true</WasmSingleFileBundle>\n<WasmBuildNative>true</WasmBuildNative>\n|' HTTPRequestingPlugin.csproj 
-```
-
-7. Copy HTTP example source code into project's folder to replace generated one:
+6. Copy HTTP example source code into project's folder to replace a generated one:
 
 ```sh
 cp ../Program.cs . 
@@ -66,8 +63,8 @@ For testing purposes, you can invoke functions from Extism plugins with [Extism 
 1. Install `Extism CLI` from Github releases: 
 
 ```sh
-wget https://github.com/extism/cli/releases/download/v0.3.0/extism-v0.3.0-linux-amd64.tar.gz
-tar -xzf extism-v0.3.0-linux-amd64.tar.gz
+wget https://github.com/extism/cli/releases/download/v1.5.1/extism-v1.5.1-linux-amd64.tar.gz -O /tmp/extism.tar.gz
+tar -xzf /tmp/extism.tar.gz -C /tmp ; mv /tmp/extism .
 ```
 
 And now you have `extism` binary in current folder.

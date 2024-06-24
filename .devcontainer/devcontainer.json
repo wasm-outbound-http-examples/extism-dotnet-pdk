@@ -1,15 +1,15 @@
 {
-  "name": "Extism DotNet",
+  "name": "Extism DotNet: HTTP request from WASM",
   "image": "mcr.microsoft.com/dotnet/sdk:8.0",
   "remoteEnv": {
     "PATH": "${containerEnv:PATH}:/usr/local/lib/wasi-sdk-20.0/bin:/usr/local/lib",
     "WASI_SDK_PATH": "/usr/local/lib/wasi-sdk-20.0/"
   },
   "features": {
-    "devwasm.azurecr.io/dev-wasm/dev-wasm-feature/wasmtime-wasi:0.0.9": {
+    "devwasm.azurecr.io/dev-wasm/dev-wasm-feature/wasmtime-wasi:0.0.15": {
       "version": "20",
-      "wasmtime_version": "v9.0.4",
-      "wit_version": "0.4.0"
+      "wasmtime_version": "v22.0.0",
+      "wit_version": "0.19.2"
     },
     "ghcr.io/devcontainers/features/common-utils": {}
   },
